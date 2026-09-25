@@ -56,6 +56,8 @@ graph TB
     K -.->|Runs| D
     K -.->|Runs| H
 
+```
+
 ## 🏗 Architektur & Tech Stack
 - **Orchestrierung:** Apache Airflow (LocalExecutor für VPS-Optimierung)
 - **Transformation:** dbt-core (Data Build Tool)
