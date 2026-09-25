@@ -1,9 +1,7 @@
-cd ~/document-analysis-pipeline
 
-cat << 'EOF' > README.md
-# 📄 Document Analysis & Management Pipeline
+# Document Analysis & Management Pipeline
 
-## 🚀 Projektübersicht
+## Projektübersicht
 
 Dieses Projekt demonstriert eine moderne, produktionsreife Datenpipeline für die **automatisierte Dokumentenanalyse** im Enterprise-Umfeld. Es wurde speziell als Portfolio-Projekt für Data/AI Engineering Rollen im DACH-Raum entwickelt und zeigt End-to-End Kompetenz in den Bereichen Data Ingestion, Transformation und Orchestrierung.
 
@@ -11,7 +9,7 @@ Die Pipeline verarbeitet unstrukturierte PDF-Dokumente, extrahiert Text und Meta
 
 Das Projekt ist vollständig containerisiert mit Docker, um "Works on my machine"-Probleme zu vermeiden und eine einfache Deployment-Fähigkeit auf beliebigen Infrastrukturen (VPS, Cloud, On-Premise) zu gewährleisten. Es eignet sich ideal als Blaupause für reale Use Cases wie Vertragsanalyse, Rechnungsautomatisierung oder Compliance-Dokumentation.
 
-## 🏗 Architekturdiagramm
+## Architekturdiagramm
 
 ```mermaid
 graph TB
@@ -58,14 +56,14 @@ graph TB
 
 ```
 
-## 🏗 Architektur & Tech Stack
+## Architektur & Tech Stack
 - **Orchestrierung:** Apache Airflow (LocalExecutor für VPS-Optimierung)
 - **Transformation:** dbt-core (Data Build Tool)
 - **Datenbank:** PostgreSQL 15 (als Data Warehouse)
 - **Extraktion:** Python (`pypdf` für PDF-Parsing)
 - **Infrastruktur:** Docker & Docker Compose
 
-## 🔄 Pipeline Workflow
+## Pipeline Workflow
 1. **Ingestion & Extraction (Python):** 
    - Generiert/Liest PDF-Dokumente.
    - Extrahiert Text, Seitenanzahl und Wortanzahl.
@@ -76,7 +74,7 @@ graph TB
    - `stg_documents`: Bereinigt die Raw-Daten und standardisiert Formate.
    - `doc_metrics`: Berechnet Business-Metriken (z.B. durchschnittliche Wortlänge, Klassifikation als "Vertrag" via Keyword-Matching).
 
-## 🛠 Setup & Installation
+## Setup & Installation
 
 ### Voraussetzungen
 - Docker & Docker Compose
