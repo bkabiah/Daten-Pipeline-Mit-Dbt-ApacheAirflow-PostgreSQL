@@ -55,3 +55,45 @@ graph TB
     G -->|9. CREATE TABLE| J
     K -.->|Runs| D
     K -.->|Runs| H
+
+## 🏗 Architektur & Tech Stack
+- **Orchestrierung:** Apache Airflow (LocalExecutor für VPS-Optimierung)
+- **Transformation:** dbt-core (Data Build Tool)
+- **Datenbank:** PostgreSQL 15 (als Data Warehouse)
+- **Extraktion:** Python (`pypdf` für PDF-Parsing)
+- **Infrastruktur:** Docker & Docker Compose
+
+## 🔄 Pipeline Workflow
+1. **Ingestion & Extraction (Python):** 
+   - Generiert/Liest PDF-Dokumente.
+   - Extrahiert Text, Seitenanzahl und Wortanzahl.
+   - Lädt die Daten in den `raw` Layer (PostgreSQL).
+2. **Orchestrierung (Airflow):** 
+   - Triggered die Tasks, verwaltet Dependencies und stellt Retry-Logik sicher.
+3. **Transformation (dbt):**
+   - `stg_documents`: Bereinigt die Raw-Daten und standardisiert Formate.
+   - `doc_metrics`: Berechnet Business-Metriken (z.B. durchschnittliche Wortlänge, Klassifikation als "Vertrag" via Keyword-Matching).
+
+## 🛠 Setup & Installation
+
+### Voraussetzungen
+- Docker & Docker Compose
+- Git
+
+### Schritte
+```bash
+# Repository klonen
+git clone <deine-repo-url>
+cd document-analysis-pipeline
+
+# Umgebungsvariablen setzen (Standardwerte sind bereits in .env für Demo)
+cp .env.example .env 
+
+# Container bauen und starten
+docker-compose up -d --build
+
+# Airflow UI aufrufen
+# URL: http://localhost:8080 (oder http://<VPS-IP>:8080)
+# User: admin | Passwort: admin
+
+
