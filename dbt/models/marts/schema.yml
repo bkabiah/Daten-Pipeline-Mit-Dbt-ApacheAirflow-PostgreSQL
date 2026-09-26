@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: doc_metrics
+    description: "Business-Metriken und Klassifikationen für Dokumentenanalyse."
+    columns:
+      - name: id
+        description: "Eindeutige ID des Dokuments."
+        tests:
+          - unique
+          - not_null
+
+      - name: file_name
+        description: "Originaler Dateiname des Dokuments."
+        tests:
+          - not_null
+
+      - name: page_count
+        description: "Anzahl der Seiten im Dokument."
+        tests:
+          - not_null
+
+      - name: word_count
+        description: "Anzahl der Wörter im Dokument."
+        tests:
+          - not_null
+
+      - name: avg_word_length
+        description: "Durchschnittliche Wortlänge als Indikator für Textkomplexität."
+        tests:
+          - not_null
+
+      - name: is_contract
+        description: "Boolean-Flag, ob das Dokument ein Vertrag ist (Keyword-Matching)."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['true', 'false', 't', 'f']
+
+      - name: created_at
+        description: "Zeitstempel der ursprünglichen Extraktion."
+        tests:
+          - not_null

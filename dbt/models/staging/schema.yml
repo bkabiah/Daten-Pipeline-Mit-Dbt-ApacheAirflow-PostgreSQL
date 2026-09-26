@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_documents
+    description: "Bereinigte und standardisierte Dokumentendaten aus dem Raw Layer."
+    columns:
+      - name: id
+        description: "Eindeutige ID des Dokuments (basierend auf Dateiname)."
+        tests:
+          - unique
+          - not_null
+
+      - name: file_name
+        description: "Originaler Dateiname des PDF-Dokuments."
+        tests:
+          - unique
+          - not_null
+
+      - name: file_name_lower
+        description: "Kleingeschriebener Dateiname für konsistente Suche."
+        tests:
+          - not_null
+
+      - name: page_count
+        description: "Anzahl der Seiten im PDF-Dokument."
+        tests:
+          - not_null
+
+      - name: word_count
+        description: "Anzahl der extrahierten Wörter."
+        tests:
+          - not_null
+
+      - name: extracted_text
+        description: "Der vollständige extrahierte Text des Dokuments."
+        tests:
+          - not_null
+
+      - name: created_at
+        description: "Zeitstempel der Extraktion."
+        tests:
+          - not_null
